@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operaciones Aritméticas - Johan Alberto</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f4f7f6;
+            display: flex;
+            justify-content: center;
+            padding-top: 50px;
+        }
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            width: 400px;
+        }
+        h2 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        .info { color: #7f8c8d; font-size: 0.9em; margin-bottom: 20px; }
+        .resultado {
+            background: #fdfdfd;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #eee;
+        }
+        b { color: #e74c3c; }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h2>Calculadora de Variables</h2>
+        <div class="info">
+            <strong>Usuario:</strong> Johan Alberto Quiñonez Felix<br>
+            <strong>Cuenta:</strong> 20029012
+        </div>
+
+        <div class="resultado">Suma (a + b): <span id="suma"></span></div>
+        <div class="resultado">Resta (a - b): <span id="resta"></span></div>
+        <div class="resultado">División (a / b): <span id="division"></span></div>
+        <div class="resultado">Exponenciación (a<sup>b</sup>): <span id="potencia"></span></div>
+    </div>
+
+    <script>
+        // Declaración de variables con valores de ejemplo
+        let a = 10;
+        let b = 3;
+
+        // Realización de operaciones
+        let suma = a + b;
+        let resta = a - b;
+        let division = a / b;
+        let potencia = a ** b; // Operador de exponenciación
+
+        // Inserción de resultados en el HTML usando innerHTML
+        document.getElementById("suma").innerHTML = `<b>${suma}</b>`;
+        document.getElementById("resta").innerHTML = `<b>${resta}</b>`;
+        
+        // Usamos toFixed(2) para que la división no tenga demasiados decimales
+        document.getElementById("division").innerHTML = `<b>${division.toFixed(2)}</b>`;
+        
+        document.getElementById("potencia").innerHTML = `<b>${potencia}</b>`;
+
+        // También enviamos un reporte a la consola como buena práctica
+        console.log("Valores procesados para Johan Alberto:");
+        console.log("Variable A:", a);
+        console.log("Variable B:", b);
+    </script>
+
+</body>
+</html>
