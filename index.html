@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salidas JS - Johan Alberto Quiñonez Felix</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 30px; background-color: #f0f2f5; }
+        .card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); max-width: 600px; margin: auto; }
+        h1 { color: #1a73e8; border-bottom: 2px solid #e8eaed; padding-bottom: 10px; }
+        .metodo { margin-bottom: 20px; padding: 10px; border-left: 4px solid #1a73e8; background: #f8f9fa; }
+        button { background-color: #1a73e8; color: white; border: none; padding: 10px 15px; border-radius: 4px; cursor: pointer; }
+        button:hover { background-color: #1557b0; }
+        code { color: #d81b60; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>Salidas de Texto en JavaScript</h1>
+        
+        <div class="metodo">
+            <strong>1. innerHTML:</strong>
+            <p id="datos-personales"></p>
+        </div>
+
+        <div class="metodo">
+            <strong>2. document.write():</strong><br>
+            <script>
+                document.write("Correo electrónico: <code>johan@gmail.com</code>");
+            </script>
+        </div>
+
+        <div class="metodo">
+            <strong>3. window.alert():</strong><br>
+            <p>Haz clic para ver el número de cuenta:</p>
+            <button onclick="mostrarCuenta()">Ver Cuenta</button>
+        </div>
+
+        <div class="metodo">
+            <strong>4. console.log():</strong>
+            <p>Presiona <code>F12</code> y abre la pestaña 'Console' para ver el registro del sistema.</p>
+        </div>
+    </div>
+
+    <script>
+        // 1. innerHTML - Modifica el contenido de un elemento específico
+        document.getElementById("datos-personales").innerHTML = 
+            "Nombre: <strong>Johan Alberto Quiñonez Felix</strong>";
+
+        // 3. window.alert() - Muestra una ventana emergente
+        function mostrarCuenta() {
+            window.alert("Número de cuenta: 20029012");
+        }
+
+        // 4. console.log() - Escribe directamente en la consola del navegador
+        console.log("--- Perfil de Usuario Cargado ---");
+        console.log("Nombre: Johan Alberto Quiñonez Felix");
+        console.log("ID de Cuenta: 20029012");
+        console.log("Número de cuenta: 20029012")
+        console.log("Status: Estudiante de Ingeniería de Software");
+        console.log("---------------------------------");
+    </script>
+
+</body>
+</html>
