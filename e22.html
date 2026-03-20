@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resolución Fórmula General - Johan Alberto</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #f4f4f9; display: flex; justify-content: center; padding: 20px; }
+        .container { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); width: 400px; }
+        h2 { color: #004a99; text-align: center; margin-bottom: 5px; }
+        .user-data { text-align: center; font-size: 0.85em; color: #666; margin-bottom: 20px; }
+        
+        .formula-img { display: block; margin: 10px auto; background: #eee; padding: 10px; border-radius: 5px; font-style: italic; text-align: center; }
+        
+        label { display: block; margin-top: 10px; font-weight: bold; }
+        input { width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        
+        button { 
+            width: 100%; background-color: #004a99; color: white; border: none; 
+            padding: 12px; margin-top: 20px; border-radius: 4px; cursor: pointer; font-size: 1.1em;
+        }
+        button:hover { background-color: #003366; }
+        
+        .result-box { 
+            margin-top: 20px; padding: 15px; border-radius: 5px; 
+            background: #e7f3ff; border: 1px solid #b3d7ff; display: none; 
+        }
+        .error { background: #ffe7e7; border-color: #ffb3b3; color: #d93025; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Fórmula General</h2>
+    <div class="user-data">
+        <strong>Johan Alberto Quiñonez Felix</strong><br>
+        Cuenta: 20029012 | FIM UAS
+    </div>
+
+    <div class="formula-img">
+        ax² + bx + c = 0
+    </div>
+
+    <label for="a">Valor de a:</label>
+    <input type="number" id="a" step="any" placeholder="Ej: 1">
+
+    <label for="b">Valor de b:</label>
+    <input type="number" id="b" step="any" placeholder="Ej: -5">
+
+    <label for="c">Valor de c:</label>
+    <input type="number" id="c" step="any" placeholder="Ej: 6">
+
+    <button onclick="resolverFormula()">Calcular x1 y x2</button>
+
+    <div id="resultado" class="result-box"></div>
+</div>
+
+<script>
+    function resolverFormula() {
+        // Captura de valores
+        const a = parseFloat(document.getElementById("a").value);
+        const b = parseFloat(document.getElementById("b").value);
+        const c = parseFloat(document.getElementById("c").value);
+        const display = document.getElementById("resultado");
+
+        // Limpiar estilos previos
+        display.classList.remove("error");
+        display.style.display = "block";
+
+        // 1. Validación: 'a' no puede ser 0 (no sería una ecuación cuadrática)
+        if (a === 0) {
+            display.classList.add("error");
+            display.innerHTML = "<strong>Error:</strong> El valor de 'a' no puede ser 0.";
+            return;
+        }
+
+        // 2. Cálculo del discriminante (b² - 4ac)
+        const discriminante = Math.pow(b, 2) - (4 * a * c);
+
+        // 3. Validación: Si el discriminante es negativo, las raíces son imaginarias
+        if (discriminante < 0) {
+            display.classList.add("error");
+            display.innerHTML = "<strong>Resultado:</strong> Las raíces son números complejos (imaginarios).";
+        } else {
+            // 4. Aplicación de la fórmula: x = (-b ± √disc) / 2a
+            const x1 = (-b + Math.sqrt(discriminante)) / (2 * a);
+            const x2 = (-b - Math.sqrt(discriminante)) / (2 * a);
+
+            display.innerHTML = `
+                <strong>Resultados para Johan:</strong><br>
+                Valor de x1: <b>${x1.toFixed(4)}</b><br>
+                Valor de x2: <b>${x2.toFixed(4)}</b>
+            `;
+            
+            // Log de auditoría para el sistema
+            console.log(`Ecuación: ${a}x² + ${b}x + ${c} = 0`);
+            console.log(`Resultados: x1=${x1}, x2=${x2}`);
+        }
+    }
+</script>
+
+</body>
+</html>

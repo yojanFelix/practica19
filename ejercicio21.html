@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Interactiva - Johan Alberto</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f0f2f5; display: flex; justify-content: center; padding: 40px; }
+        .card { background: white; padding: 25px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); width: 350px; }
+        h2 { color: #1a73e8; font-size: 1.4em; margin-bottom: 15px; }
+        .user-info { font-size: 0.85em; color: #5f6368; margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        
+        label { display: block; margin-bottom: 5px; font-weight: bold; color: #3c4043; }
+        input { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #dadce0; border-radius: 4px; box-sizing: border-box; }
+        
+        button { 
+            width: 100%; background-color: #1a73e8; color: white; border: none; 
+            padding: 12px; border-radius: 4px; cursor: pointer; font-size: 1em; font-weight: bold;
+        }
+        button:hover { background-color: #174ea6; }
+        
+        .resultados-panel { margin-top: 20px; padding-top: 15px; border-top: 2px dashed #e8eaed; }
+        .res-item { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.95em; }
+        .val { font-weight: bold; color: #d93025; }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>Operaciones Aritméticas</h2>
+    <div class="user-info">
+        <strong>Estudiante:</strong> Johan Alberto Quiñonez Felix<br>
+        <strong>Cuenta:</strong> 20029012
+    </div>
+
+    <label for="num1">Valor A:</label>
+    <input type="number" id="num1" placeholder="Ingresa el primer número">
+
+    <label for="num2">Valor B:</label>
+    <input type="number" id="num2" placeholder="Ingresa el segundo número">
+
+    <button onclick="calcular()">Ejecutar Operaciones</button>
+
+    <div class="resultados-panel">
+        <div class="res-item">Suma: <span id="outSuma" class="val">-</span></div>
+        <div class="res-item">Resta: <span id="outResta" class="val">-</span></div>
+        <div class="res-item">División: <span id="outDiv" class="val">-</span></div>
+        <div class="res-item">Exponenciación: <span id="outExp" class="val">-</span></div>
+    </div>
+</div>
+
+<script>
+    function calcular() {
+        // Obtener los valores de las cajas de texto y convertirlos a números
+        // Usamos Number() para asegurar que no se concatenen como texto
+        let a = Number(document.getElementById("num1").value);
+        let b = Number(document.getElementById("num2").value);
+
+        // Validar que se hayan ingresado números
+        if (isNaN(a) || isNaN(b)) {
+            alert("Por favor, ingresa números válidos en ambas cajas.");
+            return;
+        }
+
+        // Realizar cálculos
+        let suma = a + b;
+        let resta = a - b;
+        let division = b !== 0 ? (a / b).toFixed(2) : "Error (Div/0)";
+        let exp = a ** b;
+
+        // Imprimir resultados en la página (innerHTML)
+        document.getElementById("outSuma").innerHTML = suma;
+        document.getElementById("outResta").innerHTML = resta;
+        document.getElementById("outDiv").innerHTML = division;
+        document.getElementById("outExp").innerHTML = exp;
+
+        // Salida adicional en consola para auditoría
+        console.log(`Cálculo ejecutado para la cuenta 20029012: A=${a}, B=${b}`);
+    }
+</script>
+
+</body>
+</html>
